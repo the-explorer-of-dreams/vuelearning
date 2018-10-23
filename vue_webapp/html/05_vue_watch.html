@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-bind="http://www.w3.org/1999/xhtml" xmlns:v-on="http://www.w3.org/1999/xhtml">
+    <meta charset="UTF-8">
+    <title>vue_startup</title>
+    <script src="../js/vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <!--counter-->
+    <p style = "font-size:25px;">计数器: {{ counter }}</p>
+    <button @click = "counter++" style = "font-size:25px;">点我</button>
+    <br />
+    <!--exchange-->
+    <label for="kilometers">kilometers:</label>
+    <input id="kilometers" type="text" v-model="kilometers"><span>KM</span>
+    <br />
+    <label for="meters">meters:</label>
+    <input id="meters" type="text" v-model="meters"><span>M</span>
+</div>
+<script type="text/javascript">
+    var vm = new Vue({
+        el: '#app',
+        data: {
+            counter: 0,
+            kilometers: 0,
+            meters: 0,
+        },
+        watch:{
+            kilometers: function(newValue){
+                this.meters = this.kilometers * 1000
+            },
+            meters:function(newValue){
+                this.kilometers = this.meters / 1000
+            }
+        }
+    })
+
+    vm.$watch('counter',function(newVal, oldVal){
+       alert('counter change from ' + oldVal + ' to ' + newVal + '!')
+    })
+</script>
+</body>
+</html>

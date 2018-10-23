@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+    <meta charset="UTF-8">
+    <title>vue_startup</title>
+    <script src="../js/vue.js"></script>
+</head>
+<body>
+<div id="vue-det">
+    <h1>site: {{site}}</h1>
+    <h1>url: {{url}}</h1>
+    <h1>alexa: {{alexa}}</h1>
+</div>
+<script type="text/javascript">
+    var data = {
+        site: "菜鸟教程",
+        url: "www.runoob.com",
+        alexa: 10000,
+    }
+
+
+
+    var vm = new Vue({
+        el: '#vue-det',
+        data: data,
+        methods: {
+            details: function(){
+                return this.site + " - 学习的不仅是技术，更是梦想"
+            }
+        }
+    })
+
+    //the same object ?
+    document.write(vm.site === data.site)
+    document.write("<br />")
+    //modified  the vm.site
+    vm.site = "Runoob"
+    document.write(data.site)
+    document.write("<br />")
+    //modified the data.alexa
+    data.alexa = 12345
+    document.write(vm.alexa)
+    document.write("<br />")
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-bind="http://www.w3.org/1999/xhtml" xmlns:v-on="http://www.w3.org/1999/xhtml">
+    <meta charset="UTF-8">
+    <title>vue_startup</title>
+    <script src="../js/vue.js"></script>
+</head>
+<body>
+<div id="app">
+    {{site}}
+</div>
+<script type="text/javascript">
+    var vm = new Vue({
+        el: '#app',
+        data: {
+            name: 'Google',
+            url: 'http://www.google.com'
+        },
+        computed: {
+            site: {
+                get: function(){
+                    return this.name + " " + this.url
+                },
+                set:function(newValue){
+                    var names = newValue.split(' ')
+                    this.name = names[0]
+                    this.url = names[names.length - 1]
+                }
+            }
+        }
+    })
+
+
+    vm.site = "RUNOOB http://www.runoob.com"
+    document.write('name: ' + vm.name)
+    document.write('<br />')
+    document.write('url:' + vm.url)
+
+</script>
+</body>
+</html>

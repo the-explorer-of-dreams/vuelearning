@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-bind="http://www.w3.org/1999/xhtml" xmlns:v-on="http://www.w3.org/1999/xhtml">
+    <meta charset="UTF-8">
+    <title>vue_startup</title>
+    <script src="../js/vue.js"></script>
+</head>
+<body>
+<div id="app">
+    {{message}}
+    <br />
+    <button v-on:click="reverseMessage">反转字符串</button>
+</div>
+<script type="text/javascript">
+    var vm = new Vue({
+        el: '#app',
+        data: {
+            message: 'initial data',
+        },
+        methods: {
+            reverseMessage: function(){
+                this.message = this.message.split('').reverse().join('');
+            }
+        }
+    });
+</script>
+</body>
+</html>
