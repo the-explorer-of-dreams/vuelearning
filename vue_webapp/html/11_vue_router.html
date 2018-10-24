@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-bind="http://www.w3.org/1999/xhtml" xmlns:v-on="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>vue_startup</title>
+    <script src="../js/vue.js"></script>
+    <script src="../js/vue-router.js"></script>
+    <style>
+        .active{
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+<div id="app">
+    <h1>Hello App!</h1>
+    <p>
+        <router-link to="/foo" event = "mouseover">Go to foo</router-link>
+        <router-link to="/bar" event = "mouseover">Go to bar</router-link>
+    </p>
+    <!--路由出口，匹配到的组件渲染到这里-->
+    <router-view></router-view>
+</div>
+
+<script type="text/javascript">
+    // 定义组件
+    const Foo = {template: '<div>foo</div>'}
+    const Bar = {template: '<div>bar</div>'}
+    // 定义路由配置
+    const routes = [
+        {path: '/foo', component: Foo},
+        {path: '/bar', component: Bar}
+    ]
+    //创建路由实例
+    const router = new VueRouter({
+        routes: routes
+    })
+
+    //创建节点，并配置路由
+    const app = new Vue({
+        el: '#app',
+        router: router,
+    })
+
+</script>
+</body>
+</html>
