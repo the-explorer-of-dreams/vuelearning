@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-bind="http://www.w3.org/1999/xhtml" xmlns:v-on="http://www.w3.org/1999/xhtml">
+    <meta charset="UTF-8">
+    <title>vue_form</title>
+    <script src="../js/vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <form action="">
+
+        <p>text: {{message}}</p>
+        <label for="text">text:</label>
+        <input id="text" type="text" v-model="message">
+        <br /><br />
+        <p>text: {{article}}</p>
+        <label for="textarea">textarea:</label>
+        <input id="textarea" type="textarea" v-model="article">
+        <br /><br />
+        <p>single checkbox: {{singleCheckbox}}</p>
+        <label for="single-checkbox">single checkbox:</label>
+        <input id="single-checkbox" type="checkbox" v-model="singleCheckbox">
+        <br /><br />
+        <p>multi checkbox: {{checkNames}}</p>
+        <label for="runoob">runoob:</label>
+        <input id="runoob" type="checkbox" v-model="checkNames" value="runoob">
+        <label for="baidu">baidu:</label>
+        <input id="baidu" type="checkbox" v-model="checkNames" value="baidu">
+        <label for="google">google:</label>
+        <input id="google" type="checkbox" v-model="checkNames" value="google">
+        <br /><br />
+        <p>radio: {{picked}}</p>
+        <label for="runoob">runoob:</label>
+        <input id="runoob" type="radio" v-model="picked" value="runoob">
+        <label for="baidu">baidu:</label>
+        <input id="baidu" type="radio" v-model="picked" value="baidu">
+        <p>select: {{selected}}</p>
+        <label for="select">select:</label>
+        <select id="select" type="select" v-model="selected" >
+            <option value="runoob">runoob</option>
+            <option value="baidu">baidu</option>
+        </select>
+
+    </form>
+</div>
+<script type="text/javascript">
+    var vm = new Vue({
+        el: '#app',
+        data: {
+            message: 'Runoob',
+            article: '菜鸟教程\r\nhttp://www.runoob.com',
+            singleCheckbox:false,
+            checkNames:['runoob'],
+            picked:'runoob',
+            selected:[],
+        }
+    })
+</script>
+</body>
+</html>

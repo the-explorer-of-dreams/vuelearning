@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-bind="http://www.w3.org/1999/xhtml" xmlns:v-on="http://www.w3.org/1999/xhtml">
+    <meta charset="UTF-8">
+    <title>vue_component</title>
+    <script src="../js/vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <runoob></runoob>
+    <runoobchild>runoob</runoobchild>
+    <p>static</p>
+    <runoobarg message="my message"></runoobarg>
+</div>
+<div id="app2">
+    <runoob></runoob>
+    <runoobchild></runoobchild>
+    <p>dynamic str</p>
+    <runoobarg :message="bindedMessage"></runoobarg>
+    <input type="text" v-model="bindedMessage">
+</div>
+<div id="app3">
+    <p>dynamic object</p>
+    <siteslist v-bind:sites="sites"></siteslist>
+</div>
+
+<script type="text/javascript">
+    Vue.component('runoob',{
+            template: '<h3>自定义全局组件！</h3>'
+    })
+
+    Vue.component('runoobarg',{
+        props:['message'],
+        template: '<h3>自定义全局组件带参数！message;{{message}}</h3>',
+    })
+
+    Vue.component('runoobargobject',{
+        props:['todo'],
+        template: '',
+    })
+
+    Vue.component('siteslist',{
+        props:['sites'],
+        template: '<ul><li v-for="site in sites">{{site.text}}<runoob></runoob></li></ul>',
+    })
+
+    var vm = new Vue({
+        el: '#app',
+
+        components: {
+            runoobchild: {
+                template:'<h4>自定义局部组件！</h4>'
+            }
+        }
+    })
+    var vm1 = new Vue({
+        el: '#app2',
+        data:{
+            bindedMessage: 'bindedMessage_initial'
+        },
+    })
+    var app3 = new Vue({
+        el: '#app3',
+        data:{
+            sites: [
+                {text: 'www.runoob.com'},
+                {text: 'www.baidu.com'},
+                {text: 'www.google.com'},
+            ]
+        },
+    })
+</script>
+</body>
+</html>

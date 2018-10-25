@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-bind="http://www.w3.org/1999/xhtml" xmlns:v-on="http://www.w3.org/1999/xhtml">
+    <meta charset="UTF-8">
+    <title>vue_startup</title>
+    <script src="../js/vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <p>{{counter}}</p>
+    <br />
+    <button @click="counter++">点击调用内联</button>
+    <br /><br />
+    <button @click="greet">点击调用无参函数</button>
+    <br /><br />
+    <button @click="say('hello')">点击调用带参函数</button>
+
+</div>
+<script type="text/javascript">
+    var vm = new Vue({
+        el: '#app',
+        data: {
+            counter: 0,
+            name: 'vue.js',
+        },
+        methods: {
+            greet: function(event){
+                alert('Hello ' + this.name)
+                if(event){
+                    alert(event.target.tagName)
+                }
+            },
+            say: function(arg){
+                alert(arg)
+            }
+        }
+    })
+</script>
+</body>
+</html>
